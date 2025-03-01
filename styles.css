@@ -1,0 +1,337 @@
+:root {
+    --w: calc(70vw / 6);
+    --h: calc(70vh / 4);
+}
+
+* {
+    transition: all 0.5s;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    -webkit-perspective: 1000;
+    background-image: url('images/fondogif.gif'); /* Ruta de la imagen de fondo */
+    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: calibri;
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+div {
+    display: inline-block;
+}
+
+.area-tarjeta,
+.tarjeta,
+.cara {
+    cursor: pointer;
+    width: var(--w);
+    min-width: 100px;
+    height: var(--h);
+}
+
+.tarjeta {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: iniciar 5s;
+}
+
+.cara {
+    position: absolute;
+    backface-visibility: hidden;
+    box-shadow: inset 0 0 0 5px white;
+    font-size: 500%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Cambia el color del texto en las cartas a blanco */
+}
+
+.trasera {
+    background-color: lightcyan;
+    transform: rotateY(180deg);
+}
+
+.superior {
+    background: linear-gradient(orange, darkorange);
+}
+
+.nuevo-juego {
+    cursor: pointer;
+    background: linear-gradient(orange, darkorange);
+    padding: 20px;
+    border-radius: 50px;
+    border: white 5px solid;
+    font-size: 130%;
+    color: white; /* Cambia el color del texto del botón "Nuevo Juego" a blanco */
+}
+
+@keyframes iniciar {
+
+    20%,
+    90% {
+        transform: rotateY(180deg);
+    }
+
+    0%,
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white; /* Cambia el color del texto en el contenedor de autenticación a blanco */
+}
+
+.auth-container input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    width: 200px;
+}
+
+.auth-container button {
+    padding: 10px;
+    background: orange;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background: darkorange;
+}
+
+.config-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: orange;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.config-button:hover {
+    background: darkorange;
+}
+
+.config-menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+    color: black; /* El texto del menú de configuración se mantiene negro para mejor contraste */
+}
+
+.config-menu h3 {
+    margin-top: 0;
+}
+
+.config-menu label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.config-menu input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+}
+
+.color-option:hover {
+    border: 2px solid #000;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: orange;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Estilos generales para los menús */
+.game-menu {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    margin: 20px auto;
+    border: 2px solid #ff6f61;
+}
+
+.game-menu h2 {
+    font-size: 24px;
+    color: #ff6f61;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: 'Arial', sans-serif;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilos para los botones del menú */
+.menu-button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+}
+
+.menu-button:hover {
+    background-color: #ff3b2f;
+    transform: scale(1.05);
+}
+
+.menu-button:active {
+    transform: scale(0.95);
+}
+
+/* Estilos para el tablero */
+#tablero {
+    display: grid;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+/* Estilos para las tarjetas */
+.area-tarjeta {
+    perspective: 1000px;
+}
+
+.tarjeta {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.cara {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.superior {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 24px;
+}
+
+.trasera {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+.tarjeta.volteada {
+    transform: rotateY(180deg);
+}
+
+/* Estilos para el mensaje de felicitaciones */
+#congratulations-message {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #ff6f61;
+}
+
+#time-message {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
